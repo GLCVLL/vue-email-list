@@ -19,9 +19,11 @@
 </head>
 <body>
     <div id="root" class="container p-5">
-        <ul class="list-group">
-            <li v-for="email in emails" class="list-group-item">{{email}}</li>
-          </ul>
+        <div v-if="emailsLoaded">
+            <ul class="list-group">
+                <li v-for="email in emails" class="list-group-item">{{email}}</li>
+            </ul>
+        </div>
     </div>
 </body>
 </html>

@@ -5,15 +5,20 @@ const app = Vue.createApp({
     data() {
         return {
             emails: [],
+            items: 10,
+            emailsLoaded: false,
         }
     },
     methods: {
         getRandomEmails() {
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < this.items; i++) {
                 axios.get(endpoint)
                 .then((res) => {
                     const myemails = res.data.response;
                     this.emails.push(myemails);
+                    if (this.emails.length === this.items) {
+                        this.emailsLoaded = true;
+                    };
                 })
             };
         },
